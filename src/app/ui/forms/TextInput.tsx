@@ -1,8 +1,38 @@
-export default function TextInput({ name, label, className } : { name: string, label: string, className?: string }) {
+'use client'
+
+import clsx from 'clsx'
+import { useState } from 'react'
+
+import Toggle from '@/app/ui/forms/Toggle'
+
+type TextInput = "text" | "password"
+
+export default function TextInput({ type, name, label, className } : {  type: TextInput, name: string, label: string, className?: string }) {
+    const [isPasswordShown, setIsPasswordShown] = useState(false)
+    const [isFocused, setIsFocused] = useState(false)
+
     return (
         <div className={className}>
-            <label htmlFor={name} className="block text-md ms-1 mb-1">{label}</label>
-            <input type="text" name={name} id={name} className="block h-[40px] w-full outline-none border-[2px] border-[var(--color-mute)] focus:border-[var(--color-primary)] rounded-[var(--radius-md)] text-xl p-1"/>
+            <label htmlFor={name} className="block text-md font-bold ms-1 mb-1">{label}</label>
+            <div 
+                className={
+                    clsx(
+                        "flex flex-row items-center h-[40px] border-[2px] rounded-[var(--radius-md)] text-md px-[var(--spacing-4)]",
+                        {
+                            "border-[var(--color-mute)]": !isFocused,
+                            "border-[var(--color-primary)]": isFocused
+                        }
+                    )
+                }
+            >
+                <input 
+                    type={(isPasswordShown || type === "text") ? "text" : "password"}
+                    name={name} 
+                    id={name} 
+                    className="h-full outline-none grow" onFocus={() => { setIsFocused(true) }} onBlur={() => { setIsFocused(false) }} 
+                />
+                { type === "password" && <Toggle size={24} marginStart={12} onClick={(isCheck) => { setIsPasswordShown(isCheck) }} /> }
+            </div>
         </div>
     )
 }
