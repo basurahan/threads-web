@@ -23,8 +23,8 @@ export default function TextInput({ type, name, label, className } : {  type: Te
                     clsx(
                         "flex flex-row items-center h-[45px] rounded-md px-1",
                         {
-                            "border-[var(--md-sys-color-surface-variant)] border-2": !isFocused,
-                            "border-[var(--md-sys-color-primary)] border-4": isFocused
+                            "border-surfaceVariant border-2": !isFocused,
+                            "border-primary border-4": isFocused
                         }
                     )
                 }

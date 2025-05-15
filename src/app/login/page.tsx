@@ -15,10 +15,10 @@ function LoginForm() {
             <TextInput type="password"  label="Password" name="password" className="mt-4" />
 
             <div className="flex items-center mt-6">
-                <input type="checkbox" name="remember" id="remember" className="size-[18px] accent-[var(--md-sys-color-primary)]" />
+                <input type="checkbox" name="remember" id="remember" className="size-[18px] accent-primary" />
                 <label htmlFor="remember" className="select-none ms-3 md-sys-typescale-label-large">Remember me</label>
                 <span className="grow" />
-                <Link href="/register" className="md-sys-typescale-label-large text-[var(--md-sys-color-primary)]">Register</Link>
+                <Link href="/register" className="md-sys-typescale-label-large text-primary">Register</Link>
             </div>
             <Submit label="Login" className="mt-6" />
         </div>
@@ -28,7 +28,7 @@ function LoginForm() {
 
 export default async function Page() {
     return (
-        <div className="min-h-screen flex justify-center bg-[var(--md-sys-color-surface)]">
+        <div className="min-h-screen flex justify-center bg-surface">
             <LoginForm />
         </div>
     )

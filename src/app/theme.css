@@ -141,6 +141,58 @@
 	--md-sys-typescale-label-small-tracking: 0.5px;
 }
 
+@theme inline {
+	--color-primary: var(--md-sys-color-primary);
+	--color-surfaceTint: var(--md-sys-color-surface-tint);
+	--color-onPrimary: var(--md-sys-color-on-primary);
+	--color-primaryContainer: var(--md-sys-color-primary-container);
+	--color-onPrimaryContainer: var(--md-sys-color-on-primary-container);
+	--color-secondary: var(--md-sys-color-secondary);
+	--color-onSecondary: var(--md-sys-color-on-secondary);
+	--color-secondaryContainer: var(--md-sys-color-secondary-container);
+	--color-onSecondaryContainer: var(--md-sys-color-on-secondary-container);
+	--color-tertiary: var(--md-sys-color-tertiary);
+	--color-onTertiary: var(--md-sys-color-on-tertiary);
+	--color-tertiaryContainer: var(--md-sys-color-tertiary-container);
+	--color-onTertiaryContainer: var(--md-sys-color-on-tertiary-container);
+	--color-error: var(--md-sys-color-error);
+	--color-onError: var(--md-sys-color-on-error);
+	--color-errorContainer: var(--md-sys-color-error-container);
+	--color-onErrorContainer: var(--md-sys-color-on-error-container);
+	--color-background: var(--md-sys-color-background);
+	--color-onBackground: var(--md-sys-color-on-background);
+	--color-surface: var(--md-sys-color-surface);
+	--color-onSurface: var(--md-sys-color-on-surface);
+	--color-surfaceVariant: var(--md-sys-color-surface-variant);
+	--color-onSurfaceVariant: var(--md-sys-color-on-surface-variant);
+	--color-outline: var(--md-sys-color-outline);
+	--color-outlineVariant: var(--md-sys-color-outline-variant);
+	--color-shadow: var(--md-sys-color-shadow);
+	--color-scrim: var(--md-sys-color-scrim);
+	--color-inverseSurface: var(--md-sys-color-inverse-surface);
+	--color-inverseOnSurface: var(--md-sys-color-inverse-on-surface);
+	--color-inversePrimary: var(--md-sys-color-inverse-primary);
+	--color-primaryFixed: var(--md-sys-color-primary-fixed);
+	--color-onPrimaryFixed: var(--md-sys-color-on-primary-fixed);
+	--color-primaryFixedDim: var(--md-sys-color-primary-fixed-dim);
+	--color-onPrimaryFixedVariant: var(--md-sys-color-on-primary-fixed-variant);
+	--color-secondaryFixed: var(--md-sys-color-secondary-fixed);
+	--color-onSecondaryFixed: var(--md-sys-color-on-secondary-fixed);
+	--color-secondaryFixedDim: var(--md-sys-color-secondary-fixed-dim);
+	--color-onSecondaryFixedVariant: var(--md-sys-color-on-secondary-fixed-variant);
+	--color-tertiaryFixed: var(--md-sys-color-tertiary-fixed);
+	--color-onTertiaryFixed: var(--md-sys-color-on-tertiary-fixed);
+	--color-tertiaryFixedDim: var(--md-sys-color-tertiary-fixed-dim);
+	--color-onTertiaryFixedVariant: var(--md-sys-color-on-tertiary-fixed-variant);
+	--color-surfaceDim: var(--md-sys-color-surface-dim);
+	--color-surfaceBright: var(--md-sys-color-surface-bright);
+	--color-surfaceContainerLowest: var(--md-sys-color-surface-container-lowest);
+	--color-surfaceContainerLow: var(--md-sys-color-surface-container-low);
+	--color-surfaceContainer: var(--md-sys-color-surface-container);
+	--color-surfaceContainerHigh: var(--md-sys-color-surface-container-high);
+	--color-surfaceContainerHighest: var(--md-sys-color-surface-container-highest);
+}
+
 .md-sys-typescale-display-large {
 	font-family: var(--md-sys-typescale-display-large-font);
 	font-weight: var(--md-sys-typescale-display-large-weight);
