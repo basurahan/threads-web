@@ -20,11 +20,11 @@ export default function Toggle({ size, marginStart, onClick } : { size: number, 
                 width: size,
                 marginInlineStart: marginStart
             }}
-            className={`inline-block select-none hover:bg-mute rounded-full p-[var(--spacing-1)]`}
+            className={`inline-block select-none hover:bg-[var(--md-sys-color-surface-container)] rounded-full p-1`}
             onClick={handleClick}
         >
             {
-               isCheck ? (<EyeIcon className="size-full" />) : (<EyeSlashIcon className="size-full" />)
+               isCheck ? (<EyeIcon className="size-full text-[var(--md-sys-color-secondary)]" />) : (<EyeSlashIcon className="size-full text-[var(--md-sys-color-secondary)]" />)
             }
         </div>
     )

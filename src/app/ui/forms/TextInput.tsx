@@ -17,14 +17,14 @@ export default function TextInput({ type, name, label, className } : {  type: Te
 
     return (
         <div className={className}>
-            <label htmlFor={name} className="block text-md font-bold ms-1 mb-1">{label}</label>
+            <label htmlFor={name} className="block md-sys-typescale-label-large mb-2">{label}</label>
             <div 
                 className={
                     clsx(
-                        "flex flex-row items-center h-[40px] border-[2px] rounded-[var(--radius-md)] text-md px-[var(--spacing-4)]",
+                        "flex flex-row items-center h-[45px] rounded-md px-1",
                         {
-                            "border-[var(--color-mute)]": !isFocused,
-                            "border-[var(--color-primary)]": isFocused
+                            "border-[var(--md-sys-color-surface-variant)] border-2": !isFocused,
+                            "border-[var(--md-sys-color-primary)] border-4": isFocused
                         }
                     )
                 }
@@ -33,7 +33,7 @@ export default function TextInput({ type, name, label, className } : {  type: Te
                     type={(isPasswordShown || type === "text") ? "text" : "password"}
                     name={name} 
                     id={name} 
-                    className="h-full outline-none grow" onFocus={handleFocus} onBlur={handleBlur} 
+                    className="h-full outline-none grow md-sys-typescale-body-large" onFocus={handleFocus} onBlur={handleBlur} 
                 />
                 { type === "password" && <Toggle size={34} marginStart={12} onClick={handleToggleClick} /> }
             </div>
