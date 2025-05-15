@@ -4,8 +4,12 @@ import Link from 'next/link'
 
 function LoginForm() {
     return (
-        <div className="w-full md:w-md mx-4 my-6">
-            <p className="md-sys-typescale-headline-large mb-6">Welcome back!</p>
+        <div className="w-full md:w-md mx-4 my-12">
+            <div className="flex justify-center">
+                <img src="/brand.png" alt="threads-web" />
+            </div>
+
+            <p className="text-center md-sys-typescale-headline-large mt-4 mb-12">Welcome to Threads!</p>
 
             <TextInput type="text" label="Email" name="email" />
             <TextInput type="password"  label="Password" name="password" className="mt-4" />
@@ -24,7 +28,7 @@ function LoginForm() {
 
 export default async function Page() {
     return (
-        <div className="min-h-screen flex justify-center items-center">
+        <div className="min-h-screen flex justify-center bg-[var(--md-sys-color-surface)]">
             <LoginForm />
         </div>
     )
