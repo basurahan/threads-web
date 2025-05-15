@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 import Toggle from '@/app/ui/forms/Toggle'
 
@@ -10,6 +10,10 @@ type TextInput = "text" | "password"
 export default function TextInput({ type, name, label, className } : {  type: TextInput, name: string, label: string, className?: string }) {
     const [isPasswordShown, setIsPasswordShown] = useState(false)
     const [isFocused, setIsFocused] = useState(false)
+
+    const handleToggleClick = useCallback((isCheck: boolean) => { setIsPasswordShown(isCheck) }, [])
+    const handleFocus = useCallback(() => { setIsFocused(true) }, [])
+    const handleBlur = useCallback(() => { setIsFocused(false) }, [])
 
     return (
         <div className={className}>
@@ -25,13 +29,13 @@ export default function TextInput({ type, name, label, className } : {  type: Te
                     )
                 }
             >
-                <input 
+                <input
                     type={(isPasswordShown || type === "text") ? "text" : "password"}
                     name={name} 
                     id={name} 
-                    className="h-full outline-none grow" onFocus={() => { setIsFocused(true) }} onBlur={() => { setIsFocused(false) }} 
+                    className="h-full outline-none grow" onFocus={handleFocus} onBlur={handleBlur} 
                 />
-                { type === "password" && <Toggle size={24} marginStart={12} onClick={(isCheck) => { setIsPasswordShown(isCheck) }} /> }
+                { type === "password" && <Toggle size={34} marginStart={12} onClick={handleToggleClick} /> }
             </div>
         </div>
     )
