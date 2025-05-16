@@ -21,7 +21,7 @@ export default function TextInput({ type, name, label, className } : {  type: Te
             <div 
                 className={
                     clsx(
-                        "flex flex-row items-center h-[45px] rounded-md px-1",
+                        "flex flex-row items-center h-[45px] rounded-md px-2",
                         {
                             "outline-surfaceVariant outline-2": !isFocused,
                             "outline-primary outline-4": isFocused
