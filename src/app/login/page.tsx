@@ -28,7 +28,7 @@ function LoginForm() {
 
 export default async function Page() {
     return (
-        <div className="min-h-screen flex justify-center bg-surface">
+        <div className="min-h-screen flex justify-center">
             <LoginForm />
         </div>
     )

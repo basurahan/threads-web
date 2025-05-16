@@ -18,7 +18,7 @@ function RegistrationForm() {
             </div>
             <TextInput type="password"  label="Password" name="password" className="mt-4" />
             <TextInput type="password"  label="Confirm Password" name="confirm_password" className="mt-4" />
-            <Submit label="Login" className="mt-6" />
+            <Submit label="Register" className="mt-6" />
         </div>
     )
 }
@@ -26,7 +26,7 @@ function RegistrationForm() {
 
 export default async function Page() {
     return (
-        <div className="min-h-screen flex justify-center bg-surface">
+        <div className="min-h-screen flex justify-center ">
             <RegistrationForm />
         </div>
     )
