@@ -17,14 +17,14 @@ export default function TextInput({ type, name, label, className } : {  type: Te
 
     return (
         <div className={className}>
-            <label htmlFor={name} className="block md-sys-typescale-label-large mb-2">{label}</label>
+            <label htmlFor={name} className="block md-sys-typescale-label-large mb-3">{label}</label>
             <div 
                 className={
                     clsx(
                         "flex flex-row items-center h-[45px] rounded-md px-1",
                         {
-                            "border-surfaceVariant border-2": !isFocused,
-                            "border-primary border-4": isFocused
+                            "outline-surfaceVariant outline-2": !isFocused,
+                            "outline-primary outline-4": isFocused
                         }
                     )
                 }
