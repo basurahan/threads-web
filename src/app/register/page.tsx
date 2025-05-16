@@ -1,8 +1,9 @@
 import TextInput from '@/app/ui/forms/TextInput'
 import Submit from '@/app/ui/forms/Submit'
-import Link from 'next/link'
 
-function RegistrationForm() {
+import Test from '@/app/register/Test'
+
+async function RegistrationForm() {
     return (
         <div className="w-full md:w-md mx-4 my-12">
             <div className="flex justify-center">
@@ -18,6 +19,7 @@ function RegistrationForm() {
             </div>
             <TextInput type="password"  label="Password" name="password" className="mt-4" />
             <TextInput type="password"  label="Confirm Password" name="confirm_password" className="mt-4" />
+            <Test />
             <Submit label="Register" className="mt-6" />
         </div>
     )
