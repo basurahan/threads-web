@@ -6,7 +6,7 @@ import Submit from '@/app/ui/forms/Submit'
 import { useActionState, useEffect } from 'react'
 import { IRegistrationForm } from '@/app/register/types'
 import { registerUser } from '@/app/register/actions'
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 
 const initialState: IRegistrationForm = {
     message: undefined,
@@ -29,6 +29,7 @@ export default function RegistrationForm() {
 
     return (
         <form action={formAction} className="w-full md:w-md mx-4 my-12">
+            <ToastContainer />
             <div className="flex justify-center">
                 <img src="/brand.png" alt="threads-web" />
             </div>
