@@ -5,6 +5,7 @@ import { RegistrationFormFieldsSchema, IRegistrationFormState } from '@/app/regi
 import { ZodIssueCode } from 'zod'
 import { generateMessage } from '@/app/util/message'
 import { isUniqueViolation } from '@/app/util/postgres'
+import { redirect } from 'next/navigation'
 
 export async function registerUser(
     prevState: IRegistrationFormState,
@@ -57,6 +58,11 @@ export async function registerUser(
             state.message = generateMessage("something went wrong", "error")
         }
     } finally {
-        return state
+        const hasNoFieldErrors = Object.entries(state.errors).every(([key, value]) => value === undefined)
+        if (state.message !== undefined && !hasNoFieldErrors) {
+            return state
+        }
+
+        redirect("/")
     }
 }
