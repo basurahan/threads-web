@@ -37,13 +37,25 @@ export default function TextInput(
 
     return (
         <div className={className}>
-            <label htmlFor={name} className="block md-sys-typescale-label-large mb-3">{label}</label>
+            <label 
+                htmlFor={name} 
+                className={clsx(
+                    "block md-sys-typescale-label-large mb-3",
+                    {
+                        "text-onBackground": !error,
+                        "text-error": error
+                    }
+                )}
+            >
+                {label}
+            </label>
             <div 
                 className={
                     clsx(
                         "flex flex-row items-center h-[45px] rounded-md px-2",
                         {
-                            "outline-surfaceVariant outline-2": !isFocused,
+                            "outline-surfaceVariant outline-2": !isFocused && !error,
+                            "outline-error outline-4": !isFocused && error,
                             "outline-primary outline-4": isFocused
                         }
                     )
@@ -59,9 +71,7 @@ export default function TextInput(
                 />
                 { type === "password" && <Toggle size={34} marginStart={12} onClick={handleToggleClick} /> }
             </div>
-            {
-                error && <p className="md-sys-typescale-label-small mt-2 ms-1 text-error">{error}</p>
-            }
+            <p className="md-sys-typescale-label-small min-h-[var(--md-sys-typescale-label-small-line-height)] mt-2 ms-1 text-error">{error}</p>
         </div>
     )
 }
