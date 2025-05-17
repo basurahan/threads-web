@@ -20,6 +20,7 @@ class Services implements ServicesImplementations {
 }
 
 // pass the implemtations here
-export default new Services(
+const services = new Services(
     new SupabaseService(postgres(process.env.POSTGRES_URL!, { ssl: "require" }))
 )
+export default services

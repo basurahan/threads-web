@@ -1,12 +1,13 @@
 import TextInput from '@/app/ui/forms/TextInput'
 import Submit from '@/app/ui/forms/Submit'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function LoginForm() {
     return (
         <div className="w-full md:w-md mx-4 my-12">
             <div className="flex justify-center">
-                <img src="/brand.png" alt="threads-web" />
+                <Image src="/brand.png" alt="threads-web" />
             </div>
 
             <p className="text-center md-sys-typescale-headline-large mt-4 mb-12">Welcome to Threads!</p>

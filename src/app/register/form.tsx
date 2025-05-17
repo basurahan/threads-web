@@ -7,6 +7,7 @@ import { useActionState, useEffect } from 'react'
 import { IRegistrationFormState } from '@/app/register/types'
 import { registerUser } from '@/app/register/actions'
 import { toast, ToastContainer } from 'react-toastify'
+import Image from 'next/image'
 
 const initialState: IRegistrationFormState = {
     message: undefined,
@@ -21,10 +22,11 @@ const initialState: IRegistrationFormState = {
 }
 
 export default function RegistrationForm() {
-    const [state, formAction, pending] = useActionState<IRegistrationFormState, FormData>(registerUser, initialState)
+    const [state, formAction] = useActionState<IRegistrationFormState, FormData>(registerUser, initialState)
 
     useEffect(() => {
         if (state.message) toast(state.message.text, { type: state.message.type, theme: "colored" })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.message?.id])
 
     return (
@@ -32,7 +34,7 @@ export default function RegistrationForm() {
             <ToastContainer />
             
             <div className="flex justify-center">
-                <img src="/brand.png" alt="threads-web" />
+                <Image src="/brand.png" alt="threads-web" />
             </div>
 
             <p className="text-center md-sys-typescale-headline-large mt-4 mb-12">Good to have you onboard!</p>

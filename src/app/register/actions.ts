@@ -18,7 +18,7 @@ export async function registerUser(
     const password = formData.get("password") as string
     const confirmPassword = formData.get("confirmPassword") as string
 
-    let state: IRegistrationFormState = {
+    const state: IRegistrationFormState = {
         values: {
             email: email,
             firstname: firstname,
@@ -34,9 +34,10 @@ export async function registerUser(
     const form = RegistrationFormFieldsSchema.safeParse(payload)
     const codesNeedToCatch = [ZodIssueCode.too_small, ZodIssueCode.custom]
     if (!form.success) {
-        for (let item of form.error.issues) {
+        for (const item of form.error.issues) {
             if (item.code !in codesNeedToCatch) continue
-            for (let path of item.path) {
+            for (const path of item.path) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (state.errors as any)[path] = item.message
             }
         }
@@ -58,7 +59,7 @@ export async function registerUser(
             state.message = generateMessage("something went wrong", "error")
         }
     } finally {
-        const hasNoFieldErrors = Object.entries(state.errors).every(([key, value]) => value === undefined)
+        const hasNoFieldErrors = Object.values(state.errors).every(value => value === undefined)
         if (state.message !== undefined && !hasNoFieldErrors) {
             return state
         }

@@ -20,6 +20,7 @@ class Repositories implements RepositoriesImplementations {
 }
 
 // pass the implementations here
-export default new Repositories(
+const repositories = new Repositories(
     new UserRepositoryImpl(services.postgresService)
 )
+export default repositories
