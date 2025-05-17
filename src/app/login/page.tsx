@@ -7,7 +7,7 @@ function LoginForm() {
     return (
         <div className="w-full md:w-md mx-4 my-12">
             <div className="flex justify-center">
-                <Image src="/brand.png" alt="threads-web" />
+                <Image src="/brand.png" alt="threads-web" height={200} width={200} />
             </div>
 
             <p className="text-center md-sys-typescale-headline-large mt-4 mb-12">Welcome to Threads!</p>

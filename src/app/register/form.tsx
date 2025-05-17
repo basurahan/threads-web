@@ -34,7 +34,7 @@ export default function RegistrationForm() {
             <ToastContainer />
             
             <div className="flex justify-center">
-                <Image src="/brand.png" alt="threads-web" />
+                <Image src="/brand.png" alt="threads-web" height={200} width={200} />
             </div>
 
             <p className="text-center md-sys-typescale-headline-large mt-4 mb-12">Good to have you onboard!</p>
