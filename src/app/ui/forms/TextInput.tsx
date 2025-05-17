@@ -7,7 +7,27 @@ import Toggle from '@/app/ui/forms/Toggle'
 
 type TextInput = "text" | "password"
 
-export default function TextInput({ type, name, label, defaultValue, className } : {  type: TextInput, name: string, label: string, defaultValue?: string, className?: string }) {
+interface ITextInput {
+    type: TextInput, 
+    name: string, 
+    label: string, 
+    isRequired?: boolean,
+    defaultValue?: string,
+    error?: string,
+    className?: string
+}
+
+export default function TextInput(
+    { 
+        type, 
+        name, 
+        label,
+        isRequired,
+        defaultValue, 
+        error,
+        className 
+    } : ITextInput
+) {
     const [isPasswordShown, setIsPasswordShown] = useState(false)
     const [isFocused, setIsFocused] = useState(false)
 
@@ -33,11 +53,15 @@ export default function TextInput({ type, name, label, defaultValue, className }
                     type={(isPasswordShown || type === "text") ? "text" : "password"}
                     name={name} 
                     id={name} 
-                    className="h-full outline-none grow md-sys-typescale-body-large" onFocus={handleFocus} onBlur={handleBlur}
                     defaultValue={defaultValue}
+                    required={isRequired}
+                    className="h-full outline-none grow md-sys-typescale-body-large" onFocus={handleFocus} onBlur={handleBlur}
                 />
                 { type === "password" && <Toggle size={34} marginStart={12} onClick={handleToggleClick} /> }
             </div>
+            {
+                error && <p className="md-sys-typescale-label-small mt-2 ms-1 text-error">{error}</p>
+            }
         </div>
     )
 }

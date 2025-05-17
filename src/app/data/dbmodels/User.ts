@@ -1,11 +1,11 @@
 import { z } from 'zod'
 
-export const User = z.object({
+export const UserSchema = z.object({
     id: z.string().optional(),
-    email: z.string(),
-    firstname: z.string(),
-    lastname: z.string(),
-    password: z.string()
+    email: z.string().min(1, { message: "email is required" }),
+    firstname: z.string().min(1, { message: "firstname is required" }),
+    lastname: z.string().min(1, { message: "lastname is required" }),
+    password: z.string().min(1, { message: "password is required" })
 })
 
-export type IUser = z.infer<typeof User>
+export type IUser = z.infer<typeof UserSchema>

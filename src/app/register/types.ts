@@ -1,12 +1,27 @@
 import { z } from 'zod'
+import { MessageSchema } from '@/app/types/message'
 
-const RegistrationFromSchema = z.object({
-    message: z.string().optional(),
-    email: z.string().email(),
-    firstname: z.string(),
-    lastname: z.string(),
-    password: z.string(),
-    confirmPassword: z.string()
+export const RegistrationFormFieldsSchema = z.object({
+    email: z.string().min(1, { message: "email is required" }),
+    firstname: z.string().min(1, { message: "firstname is required" }),
+    lastname: z.string().min(1, { message: "lastname is required" }),
+    password: z.string().min(1, { message: "password is required" }),
+    confirmPassword: z.string().min(1, { message: "confirm password is required" })
+}).refine((data) => data.password === data.confirmPassword, {
+    message: "Password do not match",
+    path: ["password", "confirmPassword"]
 })
 
-export type IRegistrationForm = z.infer<typeof RegistrationFromSchema>
+export const RegistrationFormStateSchema = z.object({
+    message: MessageSchema,
+    values: RegistrationFormFieldsSchema,
+    errors: z.object({
+        email: z.string().optional(),
+        firstname: z.string().optional(),
+        lastname: z.string().optional(),
+        password: z.string().optional(),
+        confirmPassword: z.string().optional()
+    })
+})
+
+export type IRegistrationFormState = z.infer<typeof RegistrationFormStateSchema>

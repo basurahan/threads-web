@@ -1,6 +1,6 @@
 import PostgresService from '@/app/data/sevices/IPostgresService'
 import UserRepository from '@/app/domain/repositories/IUserRepository'
-import { User, IUser } from '@/app/data/dbmodels/User'
+import { UserSchema, IUser } from '@/app/data/dbmodels/User'
 
 export default class UserRepositoryImpl implements UserRepository {
     private _postgresService: PostgresService
@@ -15,6 +15,6 @@ export default class UserRepositoryImpl implements UserRepository {
             VALUES(${user.email}, ${user.firstname}, ${user.lastname}, ${user.password})
             returning *
         `
-        return User.parse(queryResult[0])
+        return UserSchema.parse(queryResult[0])
     }
 }
