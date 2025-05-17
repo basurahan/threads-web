@@ -24,7 +24,7 @@ export default function RegistrationForm() {
     const [state, formAction, pending] = useActionState<IRegistrationFormState, FormData>(registerUser, initialState)
 
     useEffect(() => {
-        if (state.message) toast(state.message.text)
+        if (state.message) toast(state.message.text, { type: state.message.type, theme: "colored" })
     }, [state.message?.id])
 
     return (

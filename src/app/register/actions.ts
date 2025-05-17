@@ -4,6 +4,7 @@ import registerUseCase from '@/app/domain/usecases/registration/RegisterUseCase'
 import { RegistrationFormFieldsSchema, IRegistrationFormState } from '@/app/register/types'
 import { ZodIssueCode } from 'zod'
 import { generateMessage } from '@/app/util/message'
+import { isUniqueViolation } from '@/app/util/postgres'
 
 export async function registerUser(
     prevState: IRegistrationFormState,
@@ -48,9 +49,13 @@ export async function registerUser(
             lastname,
             password  
         )
-        state.message = generateMessage("registration successful")
+        state.message = generateMessage("registration successful", "info")
     } catch(e) {
-        state.message = generateMessage("something went wrong")
+        if (isUniqueViolation(e)) {
+            state.errors.email = "email already in used"
+        } else {
+            state.message = generateMessage("something went wrong", "error")
+        }
     } finally {
         return state
     }
