@@ -13,8 +13,8 @@ export default class UserRepositoryImpl implements UserRepository {
         const queryResult = await this._postgresService.sql`
             INSERT INTO users(email, firstname, lastname, password)
             VALUES(${user.email}, ${user.firstname}, ${user.lastname}, ${user.password})
+            returning *
         `
-        console.log(queryResult)
         return User.parse(queryResult[0])
     }
 }
