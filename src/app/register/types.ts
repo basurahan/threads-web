@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { MessageSchema } from '@/app/types/message'
 
 export const RegistrationFormFieldsSchema = z.object({
-    email: z.string().min(1, { message: "email is required" }),
+    email: z.string().email({ message: "invalid email" }),
     firstname: z.string().min(1, { message: "firstname is required" }),
     lastname: z.string().min(1, { message: "lastname is required" }),
     password: z.string().min(1, { message: "password is required" }),
