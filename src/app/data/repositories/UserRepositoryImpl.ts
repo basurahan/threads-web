@@ -9,6 +9,14 @@ export default class UserRepositoryImpl implements UserRepository {
         this._postgresService = postgresService
     }
     
+    /**
+     * Inserts a new user into the database.
+     * 
+     * @param {IUser} user - The user to be inserted in the table.
+     * @returns {Promise<IUser>} A promise that resolves to the inserted user with a generated ID.
+     * 
+     * @throws {Error} If the database operation fails.
+     */
     async insert(user: IUser): Promise<IUser> {
         const queryResult = await this._postgresService.sql`
             INSERT INTO users(email, firstname, lastname, password)
