@@ -1,6 +1,7 @@
 import Repositories from '@/app/di/Repositories'
 
 import { IUser, UserSchema } from '@/app/data/dbmodels/User'
+import { hash } from '@/app/util/password'
 
 /**
  * Prepares the user data before inserting into the database.
@@ -20,7 +21,8 @@ export default async function invoke(
     lastname: string,
     password: string
 ): Promise<IUser> {
-    const payload = { email, firstname, lastname, password }
+    const hashedPassword = hash(password)
+    const payload = { email, firstname, lastname, password: hashedPassword }
     const user = UserSchema.parse(payload)
     return await Repositories.userRespository.insert(user)
 }

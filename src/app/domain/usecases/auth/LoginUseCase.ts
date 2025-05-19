@@ -1,10 +1,12 @@
 import Repositories from '@/app/di/Repositories'
 
-import { IUser, UserSchema } from '@/app/data/dbmodels/User'
+import { IUser } from '@/app/data/dbmodels/User'
+import { hash } from '@/app/util/password'
 
 export default async function invoke(
     email: string,
     password: string
 ): Promise<IUser> {
-    return await Repositories.userRespository.getUserBy(email, password)
+    const hashedPassword = hash(password)
+    return await Repositories.userRespository.getUserBy(email, hashedPassword)
 }
