@@ -6,6 +6,8 @@ import { ZodIssueCode } from 'zod'
 import { generateMessage } from '@/app/util/message'
 import { isUniqueViolation } from '@/app/util/postgres'
 import { redirect } from 'next/navigation'
+import { generateToken } from '@/app/util/jwt'
+import { cookies } from 'next/headers'
 
 export async function registerUser(
     prevState: IRegistrationFormState,
@@ -18,6 +20,7 @@ export async function registerUser(
     const password = formData.get("password") as string
     const confirmPassword = formData.get("confirmPassword") as string
 
+    let userId: string | undefined = undefined
     const state: IRegistrationFormState = {
         values: {
             email: email,
@@ -45,24 +48,38 @@ export async function registerUser(
     }
     
     try {
-        await registerUseCase(
+        const user = await registerUseCase(
             email,
             firstname,
             lastname,
             password  
         )
-        state.message = generateMessage("registration successful", "info")
+        userId = user.id
+        state.message = generateMessage("Registration successful", "info")
     } catch(e) {
         if (isUniqueViolation(e)) {
             state.errors.email = "email already in used"
         } else {
-            state.message = generateMessage("something went wrong", "error")
+            state.message = generateMessage("Something went wrong", "error")
         }
     } finally {
         const hasNoFieldErrors = Object.values(state.errors).every(value => value === undefined)
         if (state.message !== undefined && !hasNoFieldErrors) {
             return state
         }
+
+        if (userId === undefined) {
+            throw Error("Something went wrong")
+        }
+
+        const token = await generateToken({ sub: userId })
+        const cookiesStore = await cookies()
+        cookiesStore.set({
+            name: "token",
+            value: token,
+            httpOnly: true,
+            path: "/"
+        })
 
         redirect("/")
     }
