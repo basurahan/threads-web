@@ -1,6 +1,6 @@
 'use server'
 
-import registerUseCase from '@/app/domain/usecases/registration/RegisterUseCase'
+import registerUseCase from '@/app/domain/usecases/auth/RegisterUseCase'
 import { RegistrationFormFieldsSchema, IRegistrationFormState } from '@/app/register/types'
 import { ZodIssueCode } from 'zod'
 import { generateMessage } from '@/app/util/message'

@@ -25,4 +25,12 @@ export default class UserRepositoryImpl implements UserRepository {
         `
         return UserSchema.parse(queryResult[0])
     }
+
+    async getUserBy(email: string, password: string): Promise<IUser> {
+        const queryResult = await this._postgresService.sql`
+            SELECT * FROM users
+            WHERE email=${email} AND password=${password}
+        `
+        return UserSchema.parse(queryResult[0])
+    }
 }
