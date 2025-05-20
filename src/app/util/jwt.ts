@@ -6,7 +6,7 @@ const secret = new TextEncoder().encode('cc7e0d44fd473002f1c42167459001140ec6389
 export async function generateToken(payload: ISession): Promise<string> {
     return await new SignJWT(payload)
         .setProtectedHeader({ alg: "HS256", typ: "JWT" })
-        .setExpirationTime("1m")
+        .setExpirationTime("1h")
         .sign(secret)
 }
 
