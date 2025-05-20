@@ -4,13 +4,16 @@ import { IUser } from '@/app/data/dbmodels/User'
 import { hash } from '@/app/util/password'
 
 /**
- * Prepares the password for querying in the database.
- * 
- * @param email - The email of the user
- * @param password - A plain text password of the user
- * @returns {Promise<IUser>} A promise the resolves to a user.
- * 
- * @throws {Error} If the database operation fails.
+ * Authenticates a user using their email and password.
+ *
+ * This function hashes the provided plain text password and attempts to retrieve
+ * the corresponding user from the database using the given email and hashed password.
+ *
+ * @param {string} email - The email address of the user attempting to log in.
+ * @param {string} password - The plain text password provided by the user.
+ * @returns {Promise<IUser>} A promise that resolves with the authenticated user object.
+ *
+ * @throws {Error} If the database query fails or if the user is not found.
  */
 export default async function invoke(
     email: string,

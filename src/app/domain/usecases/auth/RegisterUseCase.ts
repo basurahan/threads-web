@@ -4,16 +4,18 @@ import { IUser, UserSchema } from '@/app/data/dbmodels/User'
 import { hash } from '@/app/util/password'
 
 /**
- * Prepares the user data before inserting into the database.
- * password will hashed.
- * 
- * @param {string} email - A valid email of the user, will not be validated here.
- * @param {string} firstname - The firstname of the user.
- * @param {string} lastname - The lastname of the user.
- * @param {string} password - Plaintext password of the user.
- * @returns {Promise<IUser>} A promise that resolves to the inserted user with a generated ID.
- * 
- * @throws {Error} If the database operation fails.
+ * Prepares and inserts a new user into the database.
+ *
+ * This function hashes the user's plain text password, validates the user data
+ * against the defined schema, and inserts the resulting user object into the database.
+ *
+ * @param {string} email - The user's email address.
+ * @param {string} firstname - The user's first name.
+ * @param {string} lastname - The user's last name.
+ * @param {string} password - The user's plain text password, which will be hashed before storage.
+ * @returns {Promise<IUser>} A promise that resolves to the newly inserted user object, including a generated ID.
+ *
+ * @throws {Error} If validation fails or the database insertion encounters an error.
  */
 export default async function invoke(
     email: string,

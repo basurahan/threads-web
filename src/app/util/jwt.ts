@@ -11,13 +11,16 @@ export async function generateToken(payload: ISession): Promise<string> {
 }
 
 /**
- * Verifies if a token is valid.
- * 
- * @param token - The token that needs to be verified.
- * @returns {Promise<ISession>} A promise that resolves to the payload of the token.
- * 
- * @throws {Error} If the token is invalid.
- */
+* Verifies the validity of a JWT token.
+*
+* This function checks the provided token using the HS256 algorithm and ensures
+* that all required claims (e.g., "sub") are present. If valid, it returns the decoded payload.
+*
+* @param {string} token - The JWT token to be verified.
+* @returns {Promise<ISession>} A promise that resolves to the decoded token payload.
+*
+* @throws {Error} If the token is invalid, expired, or missing required claims.
+*/
 export async function verifyToken(token: string): Promise<ISession> {
     const content = await jwtVerify<ISession>(token, secret, { algorithms: ["HS256"], requiredClaims: ["sub"] })
     return content.payload

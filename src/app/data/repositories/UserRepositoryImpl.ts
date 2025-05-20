@@ -10,13 +10,15 @@ export default class UserRepositoryImpl implements UserRepository {
     }
     
     /**
-     * Inserts a new user into the database.
-     * 
-     * @param {IUser} user - The user to be inserted in the table.
-     * @returns {Promise<IUser>} A promise that resolves to the inserted user with a generated ID.
-     * 
-     * @throws {Error} If the database operation fails.
-     */
+    * Inserts a new user record into the database.
+    *
+    * This method adds a user to the `users` table using the provided user data.
+    *
+    * @param {IUser} user - The user object to be inserted.
+    * @returns {Promise<IUser>} A promise that resolves to the inserted user, including the generated ID.
+    *
+    * @throws {Error} If the database insertion fails or the returned data is invalid.
+    */
     async insert(user: IUser): Promise<IUser> {
         const queryResult = await this._postgresService.sql`
             INSERT INTO users(email, firstname, lastname, password)
@@ -27,14 +29,16 @@ export default class UserRepositoryImpl implements UserRepository {
     }
 
     /**
-     * Retrieves a user that matches both email and password combination.
-     * 
-     * @param {string} email - The email of the user.
-     * @param {string} password - The hashed password of the user.
-     * @returns {Promise<IUser>} A promise the resolves to a user.
-     * 
-     * @throws {Error} If the database operation fails.
-     */
+    * Retrieves a user matching the provided email and hashed password.
+    *
+    * This method queries the database for a user whose email and password match the given values.
+    *
+    * @param {string} email - The user's email address.
+    * @param {string} password - The user's hashed password.
+    * @returns {Promise<IUser>} A promise that resolves to the matching user object.
+    *
+    * @throws {Error} If the database query fails or the result cannot be parsed.
+    */
     async getUserBy(email: string, password: string): Promise<IUser> {
         const queryResult = await this._postgresService.sql`
             SELECT * FROM users
