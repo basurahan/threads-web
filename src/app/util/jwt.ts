@@ -10,6 +10,14 @@ export async function generateToken(payload: ISession): Promise<string> {
         .sign(secret)
 }
 
+/**
+ * Verifies if a token is valid.
+ * 
+ * @param token - The token that needs to be verified.
+ * @returns {Promise<ISession>} A promise that resolves to the payload of the token.
+ * 
+ * @throws {Error} If the token is invalid.
+ */
 export async function verifyToken(token: string): Promise<ISession> {
     const content = await jwtVerify<ISession>(token, secret, { algorithms: ["HS256"], requiredClaims: ["sub"] })
     return content.payload

@@ -26,6 +26,15 @@ export default class UserRepositoryImpl implements UserRepository {
         return UserSchema.parse(queryResult[0])
     }
 
+    /**
+     * Retrieves a user that matches both email and password combination.
+     * 
+     * @param {string} email - The email of the user.
+     * @param {string} password - The hashed password of the user.
+     * @returns {Promise<IUser>} A promise the resolves to a user.
+     * 
+     * @throws {Error} If the database operation fails.
+     */
     async getUserBy(email: string, password: string): Promise<IUser> {
         const queryResult = await this._postgresService.sql`
             SELECT * FROM users
