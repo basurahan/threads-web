@@ -37,7 +37,7 @@ export default function LoginForm() {
             <TextInput type="text" label="Email" name="email" defaultValue={state.values.email} />
             <TextInput type="password"  label="Password" name="password" defaultValue={state.values.password} className="mt-4" />
 
-            <div className="flex items-center mt-6">
+            <div className="flex items-center mt-4">
                 <input type="checkbox" name="remember" id="remember" className="size-[18px] accent-primary" />
                 <label htmlFor="remember" className="select-none ms-3 md-sys-typescale-label-large">Remember me</label>
                 <span className="grow" />
