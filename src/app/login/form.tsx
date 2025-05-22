@@ -25,7 +25,7 @@ export default function LoginForm() {
     }, [state.message?.id])
 
     return (
-        <form action={formAction} className="w-full md:w-md mx-4 my-12">
+        <form action={formAction} className="w-full md:w-md mx-4 mt-12 mb-[200px]">
             <ToastContainer />
 
             <div className="flex justify-center">

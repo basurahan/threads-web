@@ -5,6 +5,10 @@
 	--toastify-text-color-light: var(--md-sys-color-on-primary);
 } */
 
+body, html {
+	height: 100%;
+}
+
 .ref {
 	--md-ref-typeface-weight-regular: 400;
 	--md-ref-typeface-weight-medium: 500;
