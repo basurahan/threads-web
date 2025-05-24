@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
   	}
 
 	// user access a private route
-	if (!publicRoutes.includes(request.nextUrl.pathname)) {
+	/*if (!publicRoutes.includes(request.nextUrl.pathname)) {
 
 		// user has token we should check if it is still valid
 		if (hasToken) {
@@ -51,7 +51,7 @@ export async function middleware(request: NextRequest) {
 
 		// use has no token we should direct them to login page
 		if (!hasToken) return NextResponse.redirect(new URL('/login', request.nextUrl.origin))
-	}
+	}*/
 
   	return NextResponse.next()
 }
