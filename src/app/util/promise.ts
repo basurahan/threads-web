@@ -5,7 +5,7 @@ export async function runSafe<T>(promise: Promise<T>): Promise<{ success: boolea
             success: true,
             value: result
         }
-    } catch(e) {
+    } catch {
         return {
             success: false
         }

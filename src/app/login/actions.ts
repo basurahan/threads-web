@@ -42,7 +42,7 @@ export async function login(
             httpOnly: true,
             path: "/"
         })
-    } catch(e) {
+    } catch {
         state.message = errorMessage
     } finally {
         if (state.message !== undefined) {

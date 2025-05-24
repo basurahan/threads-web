@@ -1,4 +1,4 @@
-import { generateToken, verifyToken } from '@/app/util/jwt'
+import { verifyToken } from '@/app/util/jwt'
 import { NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest) {
