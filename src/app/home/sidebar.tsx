@@ -16,6 +16,41 @@ export default function Sidebar({ isShown }: { isShown: boolean }) {
 				"hidden": !isShown
 			}
 		)}>
+			<p className="block lg:hidden md-sys-typescale-body-medium text-tertiary ms-4 mt-4">Quick Access</p>
+
+			<ul className="block lg:hidden m-4">
+				<li>
+					<a className="group flex items-center px-4 py-3 rounded-lg hover:bg-primary">
+						<Image src="https://avatar.iran.liara.run/public/boy" alt="Avatar" height={500} width={500} className="inline-block size-[20px]" />
+						<span className="md-sys-typescale-label-large ms-2 group-hover:text-onPrimary">My Profile</span>
+					</a>
+				</li>
+
+				<li className="mt-2">
+					<a className="group flex items-center px-4 py-3 rounded-lg hover:bg-primary">
+						<Image src="https://avatar.iran.liara.run/public/boy" alt="Avatar" height={500} width={500} className="inline-block size-[20px]" />
+						<span className="md-sys-typescale-label-large ms-2 group-hover:text-onPrimary">Messages</span>
+					</a>
+				</li>
+
+				<li className="mt-2">
+					<a className="group flex items-center px-4 py-3 rounded-lg hover:bg-primary">
+						<Image src="https://avatar.iran.liara.run/public/boy" alt="Avatar" height={500} width={500} className="inline-block size-[20px]" />
+						<span className="md-sys-typescale-label-large ms-2 group-hover:text-onPrimary">Notifications</span>
+					</a>
+				</li>
+
+				<li className="mt-2">
+					<a className="group flex items-center px-4 py-3 rounded-lg hover:bg-primary">
+						<Image src="https://avatar.iran.liara.run/public/boy" alt="Avatar" height={500} width={500} className="inline-block size-[20px]" />
+						<span className="md-sys-typescale-label-large ms-2 group-hover:text-onPrimary">Settings</span>
+					</a>
+				</li>
+			</ul>
+
+			<div className="block lg:hidden h-[1px] bg-surfaceVariant" />
+			<p className="md-sys-typescale-body-medium text-tertiary ms-4 mt-4">Dashboard</p>
+
 			<ul className="m-4">
 				<li>
 					<a className="group flex items-center px-4 py-3 rounded-lg hover:bg-primary">

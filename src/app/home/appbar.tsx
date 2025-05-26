@@ -17,15 +17,15 @@ export default function AppBar({ onOpenDrawer }: { onOpenDrawer: (e: React.Mouse
 				<Search />
 			</div>
 			<div className="flex items-center justify-center gap-2 me-4">
-				<a className="hidden lg:inline-block group rounded-full size-[35px] p-[4px] hover:bg-primary select-none">
+				<a className="hidden lg:inline-block group rounded-full size-[30px] p-[4px] hover:bg-primary select-none">
 					<MessageIcon className="size-full group-hover:text-onPrimary" />
 				</a>
 
-				<a className="hidden lg:inline-block group rounded-full size-[35px] p-[4px] hover:bg-primary select-none">
+				<a className="hidden lg:inline-block group rounded-full size-[30px] p-[4px] hover:bg-primary select-none">
 					<NotificationIcon className="size-full group-hover:text-onPrimary" />
 				</a>
 
-				<a className="hidden lg:inline-block rounded-full size-[35px] p-[2px] hover:bg-primary select-none">
+				<a className="hidden lg:inline-block rounded-full size-[30px] p-[2px] hover:bg-primary select-none">
 					<Image src="https://avatar.iran.liara.run/public/boy" alt="Avatar" height={500} width={500} className="size-full" />
 				</a>
 
