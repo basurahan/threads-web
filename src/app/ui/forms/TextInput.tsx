@@ -2,7 +2,7 @@
 
 import clsx from 'clsx'
 import { useState, useCallback } from 'react'
-
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 import Toggle from '@/app/ui/forms/Toggle'
 
 type TextInput = "text" | "password"
@@ -69,7 +69,7 @@ export default function TextInput(
                     required={isRequired}
                     className="h-full outline-none grow md-sys-typescale-body-large" onFocus={handleFocus} onBlur={handleBlur}
                 />
-                { type === "password" && <Toggle size={34} marginStart={12} onClick={handleToggleClick} /> }
+                { type === "password" && <Toggle className="size-[34px] ms-3" onClick={handleToggleClick} initial={<EyeSlashIcon className="size-full text-secondary" />} checked={<EyeIcon className="size-full text-secondary" />}  /> }
             </div>
             <p className="md-sys-typescale-label-small min-h-[var(--md-sys-typescale-label-small-line-height)] mt-2 ms-1 text-error">{error}</p>
         </div>
