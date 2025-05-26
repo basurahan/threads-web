@@ -10,7 +10,7 @@ export default function Search() {
     const handleBlur = useCallback(() => { setIsFocused(false) }, [])
 
     return (
-        <div 
+        <div
             className={clsx(
                 "hidden lg:flex border rounded-full border-surfaceVariant w-full max-w-[500px] items-center px-4",
                 {
@@ -21,12 +21,12 @@ export default function Search() {
             )}
         >
             <SearchIcon className="inline-block size-[20px]" />
-            <input 
+            <input
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                placeholder="Search" 
-                type="text" 
-                name="search" 
+                placeholder="Search"
+                type="text"
+                name="search"
                 id="search"
                 className="md-sys-typescale-body-large h-[34px] outline-none grow ms-4"
             />

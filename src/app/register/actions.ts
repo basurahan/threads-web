@@ -38,7 +38,7 @@ export async function registerUser(
     const codesNeedToCatch = [ZodIssueCode.too_small, ZodIssueCode.custom]
     if (!form.success) {
         for (const item of form.error.issues) {
-            if (item.code !in codesNeedToCatch) continue
+            if (item.code! in codesNeedToCatch) continue
             for (const path of item.path) {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (state.errors as any)[path] = item.message
@@ -46,17 +46,17 @@ export async function registerUser(
         }
         return state
     }
-    
+
     try {
         const user = await registerUseCase(
             email,
             firstname,
             lastname,
-            password  
+            password
         )
         userId = user.id
         state.message = generateMessage("Registration successful", "info")
-    } catch(e) {
+    } catch (e) {
         if (isUniqueViolation(e)) {
             state.errors.email = "email already in used"
         } else {
