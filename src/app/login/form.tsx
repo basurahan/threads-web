@@ -49,8 +49,8 @@ export default function LoginForm() {
 				type="password"
 				label="Password"
 				name="password"
-				defaultValue={state.values.password}
 				className="mt-4"
+				defaultValue={state.values.password}
 			/>
 
 			<div className="flex items-center mt-4">
