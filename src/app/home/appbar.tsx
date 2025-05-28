@@ -5,6 +5,9 @@ import MessageIcon from '@/assets/message.svg'
 import NotificationIcon from '@/assets/bell.svg'
 import Search from '@/app/home/search'
 import MoreIcon from '@/assets/more.svg'
+import UserIcon from '@/assets/user.svg'
+import SettingsIcon from '@/assets/setting-o.svg'
+import LogoutIcon from '@/assets/logout.svg'
 import { autoUpdate, flip, offset, shift, useDismiss, useFloating, useInteractions } from '@floating-ui/react'
 import { useState } from 'react'
 
@@ -51,22 +54,22 @@ export default function AppBar({ onOpenDrawer }: { onOpenDrawer: (e: React.Mouse
                             <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()} className="min-w-[300px] rounded-xl bg-surfaceContainer overflow-hidden">
                                 <ul>
                                     <li>
-                                        <a className="inline-block w-full px-6 py-4 bg-surfaceContainer group hover:bg-primary">
-                                            <NotificationIcon className="inline-block size-6 group-hover:text-onPrimary" />
+                                        <a className="inline-block w-full px-6 py-3 bg-surfaceContainer group hover:bg-primary">
+                                            <UserIcon className="inline-block size-5 group-hover:text-onPrimary" />
                                             <span className="md-sys-typescale-label-large ms-4 text-onSurface group-hover:text-onPrimary">My Profile</span>
                                         </a>
                                     </li>
 
                                     <li>
-                                        <a className="inline-block w-full px-6 py-4 bg-surfaceContainer group hover:bg-primary">
-                                            <NotificationIcon className="inline-block size-6 group-hover:text-onPrimary" />
+                                        <a className="inline-block w-full px-6 py-3 bg-surfaceContainer group hover:bg-primary">
+                                            <SettingsIcon className="inline-block size-5 group-hover:text-onPrimary" />
                                             <span className="md-sys-typescale-label-large ms-4 text-onSurface group-hover:text-onPrimary">Settings</span>
                                         </a>
                                     </li>
 
                                     <li>
-                                        <a className="inline-block w-full px-6 py-4 bg-surfaceContainer group hover:bg-primary">
-                                            <NotificationIcon className="inline-block size-6 group-hover:text-onPrimary" />
+                                        <a className="inline-block w-full px-6 py-3 bg-surfaceContainer group hover:bg-primary">
+                                            <LogoutIcon className="inline-block size-5 group-hover:text-onPrimary" />
                                             <span className="md-sys-typescale-label-large ms-4 text-onSurface group-hover:text-onPrimary">Logout</span>
                                         </a>
                                     </li>
