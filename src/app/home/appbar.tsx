@@ -5,8 +5,25 @@ import MessageIcon from '@/assets/message.svg'
 import NotificationIcon from '@/assets/bell.svg'
 import Search from '@/app/home/search'
 import MoreIcon from '@/assets/more.svg'
+import { autoUpdate, flip, offset, shift, useDismiss, useFloating, useInteractions } from '@floating-ui/react'
+import { useState } from 'react'
 
 export default function AppBar({ onOpenDrawer }: { onOpenDrawer: (e: React.MouseEvent<HTMLAnchorElement>) => void }) {
+    const [isOpen, setIsOpen] = useState(false)
+    const { refs, floatingStyles, context } = useFloating({
+        whileElementsMounted: autoUpdate,
+        middleware: [offset(10), shift({ padding: 16 }), flip()],
+        open: isOpen,
+        onOpenChange: setIsOpen
+    })
+    const dismiss = useDismiss(context)
+    const {getReferenceProps, getFloatingProps} = useInteractions([
+        dismiss
+    ])
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault()
+        setIsOpen(!isOpen)
+    }
     return (
         <div className="col-span-2 border-b border-surfaceVariant flex bg-surfaceContainerLowest">
             <div className="flex items-center h-full ms-4">
@@ -25,9 +42,39 @@ export default function AppBar({ onOpenDrawer }: { onOpenDrawer: (e: React.Mouse
                     <NotificationIcon className="size-full group-hover:text-onPrimary" />
                 </a>
 
-                <a className="hidden lg:inline-block rounded-full size-[30px] p-[2px] hover:bg-primary select-none">
-                    <Image src="https://avatar.iran.liara.run/public/boy" alt="Avatar" height={500} width={500} className="size-full" />
-                </a>
+                <div>
+                    <a ref={refs.setReference} onClick={handleClick} {...getReferenceProps()} className="hidden lg:inline-block rounded-full size-[30px] p-[2px] hover:bg-primary select-none">
+                        <Image src="https://avatar.iran.liara.run/public/boy" alt="Avatar" height={500} width={500} className="size-full" />
+                    </a>
+                    {
+                        isOpen && (
+                            <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()} className="min-w-[300px] rounded-xl bg-surfaceContainer overflow-hidden">
+                                <ul>
+                                    <li>
+                                        <a className="inline-block w-full px-6 py-4 bg-surfaceContainer group hover:bg-primary">
+                                            <NotificationIcon className="inline-block size-6 group-hover:text-onPrimary" />
+                                            <span className="md-sys-typescale-label-large ms-4 text-onSurface group-hover:text-onPrimary">My Profile</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a className="inline-block w-full px-6 py-4 bg-surfaceContainer group hover:bg-primary">
+                                            <NotificationIcon className="inline-block size-6 group-hover:text-onPrimary" />
+                                            <span className="md-sys-typescale-label-large ms-4 text-onSurface group-hover:text-onPrimary">Settings</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a className="inline-block w-full px-6 py-4 bg-surfaceContainer group hover:bg-primary">
+                                            <NotificationIcon className="inline-block size-6 group-hover:text-onPrimary" />
+                                            <span className="md-sys-typescale-label-large ms-4 text-onSurface group-hover:text-onPrimary">Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        )
+                    }
+                </div>
 
                 <a onClick={onOpenDrawer} className="inline-block lg:hidden group rounded-full size-[35px] p-[4px] hover:bg-primary select-none">
                     <MoreIcon className="size-full group-hover:text-onPrimary" />
