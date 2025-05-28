@@ -9,26 +9,26 @@ export default function Search() {
     const handleFocus = useCallback(() => { setIsFocused(true) }, [])
     const handleBlur = useCallback(() => { setIsFocused(false) }, [])
 
+    const containerStyle = clsx(
+        "hidden lg:flex border rounded-full border-surfaceVariant w-full max-w-[500px] items-center px-4",
+        {
+            "outline-primary outline-2": isFocused,
+            "bg-surfaceContainer": !isFocused,
+            "bg-surfaceContainerHighest": isFocused
+        }
+    )
+
     return (
-        <div
-            className={clsx(
-                "hidden lg:flex border rounded-full border-surfaceVariant w-full max-w-[500px] items-center px-4",
-                {
-                    "outline-primary outline-2": isFocused,
-                    "bg-surfaceContainer": !isFocused,
-                    "bg-surfaceContainerHighest": isFocused
-                }
-            )}
-        >
+        <div className={containerStyle}>
             <SearchIcon className="inline-block size-[20px]" />
             <input
-                onFocus={handleFocus}
-                onBlur={handleBlur}
                 placeholder="Search"
                 type="text"
                 name="search"
                 id="search"
-                className="md-sys-typescale-body-large h-[34px] outline-none grow ms-4"
+                className="md-sys-typescale-body-large h-[34px] outline-none grow ms-4 text-onSurface"
+                onFocus={handleFocus}
+                onBlur={handleBlur}
             />
         </div>
     )

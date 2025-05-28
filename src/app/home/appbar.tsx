@@ -9,7 +9,7 @@ import UserIcon from '@/assets/user.svg'
 import SettingsIcon from '@/assets/setting-o.svg'
 import LogoutIcon from '@/assets/logout.svg'
 import { autoUpdate, flip, offset, shift, useDismiss, useFloating, useInteractions } from '@floating-ui/react'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 export default function AppBar({ onOpenDrawer }: { onOpenDrawer: (e: React.MouseEvent<HTMLAnchorElement>) => void }) {
     const [isOpen, setIsOpen] = useState(false)
@@ -23,26 +23,26 @@ export default function AppBar({ onOpenDrawer }: { onOpenDrawer: (e: React.Mouse
     const {getReferenceProps, getFloatingProps} = useInteractions([
         dismiss
     ])
-    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault()
-        setIsOpen(!isOpen)
-    }
+        setIsOpen(prev => !prev)
+    }, [])
     return (
         <div className="col-span-2 border-b border-surfaceVariant flex bg-surfaceContainerLowest">
             <div className="flex items-center h-full ms-4">
                 <Image src="/brand.png" alt="threads-web" height={200} width={200} className="size-[34px] inline-block" />
-                <span className="md-sys-typescale-title-large ms-2">Threads</span>
+                <span className="md-sys-typescale-title-large ms-2 text-onSurface">Threads</span>
             </div>
             <div className="grow-1 flex items-center justify-center h-full">
                 <Search />
             </div>
             <div className="flex items-center justify-center gap-2 me-4">
                 <a className="hidden lg:inline-block group rounded-full size-[30px] p-[4px] hover:bg-primary select-none">
-                    <MessageIcon className="size-full group-hover:text-onPrimary" />
+                    <MessageIcon className="size-full group-hover:text-onPrimary text-onSurface" />
                 </a>
 
                 <a className="hidden lg:inline-block group rounded-full size-[30px] p-[4px] hover:bg-primary select-none">
-                    <NotificationIcon className="size-full group-hover:text-onPrimary" />
+                    <NotificationIcon className="size-full group-hover:text-onPrimary text-onSurface" />
                 </a>
 
                 <div>
@@ -80,7 +80,7 @@ export default function AppBar({ onOpenDrawer }: { onOpenDrawer: (e: React.Mouse
                 </div>
 
                 <a onClick={onOpenDrawer} className="inline-block lg:hidden group rounded-full size-[35px] p-[4px] hover:bg-primary select-none">
-                    <MoreIcon className="size-full group-hover:text-onPrimary" />
+                    <MoreIcon className="size-full group-hover:text-onPrimary text-onSurface" />
                 </a>
             </div>
         </div>
